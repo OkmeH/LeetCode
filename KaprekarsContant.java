@@ -6,44 +6,50 @@ public class KaprekarsContant {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-       String number = input.nextLine();
+       String str = input.nextLine();
       input.close();
-      char[] digits = number.toCharArray();
-      solving(digits);
+      int number = Integer.parseInt(str);
+       solving(number);
 
       
     }
-    static void solving(char[] val){  
-        Integer zahl =0;
-        char[] temp = val;
-        Arrays.sort(temp);
-        System.out.println(Arrays.toString(temp));
-        char[] temp2 = temp;
+    static void solving(int num){
+
+        int prev =0;
+         solving(num,prev);
+    }
+    static void solving(int num, int prev){
+
+        prev = num;
+
+        //get the digits
+        int[] digits = new int[4];
         for(int i=0;i<4;i++){
-            temp2[i] = temp[3-i];
+            digits[i] = num%10;
+            num = num/10;
         }
-        System.out.println(Arrays.toString(temp2));
-      String num1 = String.valueOf(temp);
-       int val1 = Integer.parseInt(num1);
-       System.out.println(val1);
-       
-       String num2 =String.valueOf(temp2);
-       int val2 = Integer.parseInt(num2);
-       System.out.println(val2);
-
-        zahl = val2 -val1;
-        System.out.println(zahl);
-        steps++; 
-        if(zahl!=6174){
-           String Zahl = zahl.toString();
-            solving(Zahl.toCharArray());
-
-        }else{
-            System.out.println("It took "+steps+" steps to get there");
+        //sort in ascending order
+        Arrays.sort(digits);
+        int asc = 0;
+        for(int i=0;i<4;i++){
+            //number for math
+            asc= asc*10 + digits[i];
         }
-      
-        
-            
+        //invert digits for descending number
+        int desc = 0;
+        for(int i=3;i>=0;i--){
+            //second number for math
+            desc = desc*10 +digits[i];
+        }
+        //because the descending number is always bigger
+        int result = desc -asc;
+        steps++;
+        System.out.println(result);
+        if(result==6174){
+            System.out.println(" It took "+ steps+" steps for "+result);
+        }
+        else{
+            solving(result, prev);
+        }
     }
-    
 }
