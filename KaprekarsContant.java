@@ -1,3 +1,5 @@
+//6174 is the Kaprekar Constant. This number is special as we always get this number 
+//for any four digit number such that all digits of number are not same, i.e., all four digit numbers excluding (0000, 1111, …)
 import java.util.Scanner;
 import java.util.Arrays;
 public class KaprekarsContant {
