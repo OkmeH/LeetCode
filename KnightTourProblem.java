@@ -1,3 +1,5 @@
+//This code solves the problem, where you have a chessboard and starting on on square. the chess pice Knight wants to visit every square on the board
+//without visiting one twice
 import java.util.Scanner;
 public class KnightTourProblem {
     public static int fieldSize;
